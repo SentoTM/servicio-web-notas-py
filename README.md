@@ -68,7 +68,7 @@ El proyecto incluye tests unitarios que verifican:
 - Actualización de notas
 - Eliminación de notas
 
-# Sección para Reclutadores🤖
+# Sección para Reclutador🤖
 ## Decisiones Técnicas y Proceso de Desarrollo
 El proyecto implementa una arquitectura clara y modular:
 
@@ -85,7 +85,7 @@ El proyecto implementa una arquitectura clara y modular:
 - Implementación sobre http.server nativo de Python
 - Manejo de JSON para comunicación cliente-servidor
 - Respuestas HTTP estandarizadas con códigos apropiados
-## Testing y Calidad
+## Testing
 Tests desarrollados inicialmente con asistencia de CHATGPT
 Proceso iterativo de mejora mediante:
 - Identificación de problemas en la implementación
