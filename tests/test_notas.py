@@ -14,17 +14,17 @@ from servidor.servidor import gesNotas
 class TestNotasAPI(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        # Initialize test database with a fresh connection
+        # Inicializamos base de datos
         cls.ges_db = GestorBD("test_notas.db")
         
-        # Ensure clean database state
+        # Aseguramos limpieza base de datos de pruebas
         with sqlite3.connect("test_notas.db") as conn:
             cursor = conn.cursor()
             cursor.execute("DELETE FROM notas")
-            cursor.execute("DELETE FROM sqlite_sequence")  # Reset autoincrement
+            cursor.execute("DELETE FROM sqlite_sequence")  # Reseteamos autoincremento
             conn.commit()
         
-        # Start test server
+        # Iniciamos servidor de pruebas
         def handler(*args):
             return gesNotas(cls.ges_db, *args)
         
@@ -34,11 +34,11 @@ class TestNotasAPI(unittest.TestCase):
         cls.server_thread.start()
         time.sleep(1)
     def setUp(self):
-        # Create fresh connection for each test
+
+        # Nueva conexión para cada test
         self.conn = HTTPConnection('localhost', 8000)
         
     def test_1_crear_nota(self):
-        # Test creating a new note
         datos = {
             "titulo": "Test Nota",
             "descripcion": "Descripción de prueba"
@@ -52,7 +52,6 @@ class TestNotasAPI(unittest.TestCase):
         self.assertEqual(respuesta['id'], 1)
 
     def test_2_leer_nota(self):
-        # Test reading the created note
         self.conn.request('GET', '/notas/1')
         response = self.conn.getresponse()
         
@@ -62,7 +61,6 @@ class TestNotasAPI(unittest.TestCase):
         self.assertEqual(nota['descripcion'], "Descripción de prueba")
 
     def test_3_actualizar_nota(self):
-        # Test updating the note
         datos_actualizacion = {
             "titulo": "Nota Actualizada",
             "descripcion": "Nueva descripción"
@@ -72,38 +70,37 @@ class TestNotasAPI(unittest.TestCase):
         
         self.assertEqual(response.status, 200)
         
-        # Verify the update
+        # Verificamos modificación
         self.conn.request('GET', '/notas/1')
         response = self.conn.getresponse()
         nota = json.loads(response.read().decode())
         self.assertEqual(nota['titulo'], "Nota Actualizada")
 
     def test_4_eliminar_nota(self):
-        # Test deleting the note
         self.conn.request('DELETE', '/notas/1')
         response = self.conn.getresponse()
         
         self.assertEqual(response.status, 200)
         
-        # Verify the deletion
+        # Verificamos eliminación
         self.conn.request('GET', '/notas/1')
         response = self.conn.getresponse()
         self.assertEqual(response.status, 404)
 
     def tearDown(self):
-        # Close connection after each test
+        # Cerramos conexión para evitar resourcewarning
         self.conn.close()
 
     @classmethod
     def tearDownClass(cls):
-        # Cleanup server and database
+        # Limpieza de servidor y base de datos
         cls.server.shutdown()
         cls.server.server_close()
-        time.sleep(1)  # Wait for server to stop
+        time.sleep(1)  
         try:
             os.remove("test_notas.db")
         except PermissionError:
-            pass  # File will be removed on next test run
+            pass 
 
 if __name__ == '__main__':
     unittest.main()

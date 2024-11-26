@@ -6,6 +6,7 @@ class GestorBD:
     def __init__(bd, nombre_bd="notas.db"):
         bd.nombre_bd = nombre_bd
         bd.init_bd()
+    #Añadidos para mejorar la gestión de la conexión y evitar ResorceWarning
         bd.conexion = None
 
     def __enter__(bd):
