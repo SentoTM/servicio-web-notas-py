@@ -10,7 +10,7 @@ Este proyecto implementa un servicio web RESTful para gestionar notas usando Pyt
    ```
 
 3. Inicializa el servidor:
-```
+   ```
     python main.py
    ```
 
