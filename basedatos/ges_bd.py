@@ -1,12 +1,21 @@
 import sqlite3
 from datetime import datetime
+from contextlib import contextmanager
 
 class GestorBD:
-    # Constructor de la clase - permite crear la base de datos con un nombre personalizado
     def __init__(bd, nombre_bd="notas.db"):
         bd.nombre_bd = nombre_bd
         bd.init_bd()
-   
+        bd.conexion = None
+
+    def __enter__(bd):
+        bd.conexion = sqlite3.connect(bd.nombre_bd)
+        return bd
+
+    def __exit__(bd, exc_type, exc_val, exc_tb):
+        if bd.conexion:
+            bd.conexion.close()
+
     # Inicializa la base de datos leyendo el esquema desde un archivo SQL
     def init_bd(bd):
         # Lee el archivo schema.sql que tiene la estructura de la base de datos
