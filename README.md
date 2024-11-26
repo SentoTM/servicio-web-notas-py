@@ -5,15 +5,21 @@ Este proyecto implementa un servicio web RESTful para gestionar notas usando Pyt
 ## Prueba este proyecto.
 
 1. Clona el repositorio:
+   ```
     git clone https://github.com/tu-usuario/servicio-web-notas-py.git
+   ```
 
-2. Inicializa el servidor:
+3. Inicializa el servidor:
+```
     python main.py
+   ```
 
 Usa postman en el puerto indicado (8000 por defecto)
 
 3. Prueba los tests.
+   ```
     python -m unittest tests/test_notas.py
+   ```
 
 
 
