@@ -2,25 +2,6 @@
 ## Descripción
 Este proyecto implementa un servicio web RESTful para gestionar notas usando Python. El servicio permite crear, leer, actualizar y eliminar notas mediante peticiones HTTP.
 
-## Estructura del Proyecto
-servicio-web-notas-py/
-
-├── basedatos/
-
-│   ├── ges_bd.py
-
-│   └── schema.sql
-
-├── servidor/
-
-│   └── servidor.py
-
-├── tests/
-
-│   └── test_notas.py
-
-└── main.py
-
 # Componentes principales
 ## Base de Datos (basedatos/ges_bd.py)
 - Gestiona las operaciones con SQLite
