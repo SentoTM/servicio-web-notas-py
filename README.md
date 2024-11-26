@@ -2,7 +2,7 @@
 ## Descripción
 Este proyecto implementa un servicio web RESTful para gestionar notas usando Python. El servicio permite crear, leer, actualizar y eliminar notas mediante peticiones HTTP.
 
-##Prueba este proyecto.
+## Prueba este proyecto.
 
 1. Clona el repositorio:
     git clone https://github.com/tu-usuario/servicio-web-notas-py.git
