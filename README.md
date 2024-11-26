@@ -4,13 +4,21 @@ Este proyecto implementa un servicio web RESTful para gestionar notas usando Pyt
 
 ## Estructura del Proyecto
 servicio-web-notas-py/
+
 ├── basedatos/
+
 │   ├── ges_bd.py
+
 │   └── schema.sql
+
 ├── servidor/
+
 │   └── servidor.py
+
 ├── tests/
+
 │   └── test_notas.py
+
 └── main.py
 
 # Componentes principales
